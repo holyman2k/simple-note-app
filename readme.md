@@ -8,8 +8,8 @@ The result it this simple note taking app.
 
 Requirement
 -----------
-JDK 8
-Node.js (Anything that works with React.js, I'm using 7)
+- JDK 8  
+- Node.js (Anything that works with React.js, I'm using 7)
 
 How to Run
 ----------
