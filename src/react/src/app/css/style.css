@@ -1,0 +1,22 @@
+.container {
+    width: 900px !important;
+}
+
+.search-bar {
+    margin-bottom: 10px;
+}
+
+a.text-danger:hover, a.text-danger:visited {
+    color:#ff0039 !important;
+}
+
+.text-right > .btn {
+    margin-left: 8px;
+}
+
+.labels > li {
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    margin-right: 10px;
+    color: #565656
+}
