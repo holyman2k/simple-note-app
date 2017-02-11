@@ -1,5 +1,6 @@
 package com.charliewu.notes.services;
 
+import com.charliewu.notes.services.impl.UserAccount;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public interface SecurityService {
 
-    String findLoggedInUsername();
+    UserAccount findLoggedInUserAccount();
 
     void autoLogin(String username, String password);
 }

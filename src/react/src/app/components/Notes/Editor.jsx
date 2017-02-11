@@ -44,7 +44,7 @@ const UserEditor = ({dispatch, note, allLabels}) => {
     const title = id ? 'Edit Note' : 'Create Note';
 
     const extraLabels = labelsString.length == 0 ? [] : labelsString.split(',').filter(label => allLabels.filter(option => option.label == label).length == 0);
-    const labelOptions = allLabels.concat( extraLabels.map( (label, index) => ({ key: labelOptions.length + 1 + index, value: label, label }) ));
+    const labelOptions = allLabels.concat( extraLabels.map( (label, index) => ({ value: label, label }) ));
 
     return (
         <Modal show={note != null} title={title} actionButtonTitle='SAVE'

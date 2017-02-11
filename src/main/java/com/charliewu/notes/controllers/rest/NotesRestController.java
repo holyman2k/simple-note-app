@@ -38,6 +38,9 @@ public class NotesRestController {
     private LabelRepository labelRepository;
 
     @Autowired
+    private SecurityService securityService;
+
+    @Autowired
     private AccountRepository accountRepository;
 
     @Autowired
@@ -46,8 +49,8 @@ public class NotesRestController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET)
     public List<Note> list() {
-
-        List<Note> notes = noteRepository.findAll();
+        Account account = accountRepository.findOne(securityService.findLoggedInUserAccount().getAccountid());
+        List<Note> notes = noteRepository.findByAccountOrderByIdDesc(account);
         return notes;
     }
 
@@ -67,7 +70,8 @@ public class NotesRestController {
     @ResponseBody
     @RequestMapping(path = "/account", method = RequestMethod.GET)
     public Account account() {
-        return accountRepository.findAll().get(0);
+        Account account = accountRepository.findOne(securityService.findLoggedInUserAccount().getAccountid());
+        return account;
     }
 
     @Transactional
