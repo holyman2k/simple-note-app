@@ -51,6 +51,9 @@ public class NotesRestController {
     public List<Note> list() {
         Account account = accountRepository.findOne(securityService.findLoggedInUserAccount().getAccountid());
         List<Note> notes = noteRepository.findByAccountOrderByIdDesc(account);
+
+        logger.debug("load notes: {}", notes.size());
+
         return notes;
     }
 
@@ -64,6 +67,9 @@ public class NotesRestController {
         }
 
         List<Label> filteredLabels = Lists.newArrayList(map.values());
+
+        logger.debug("load labels: {}", filteredLabels.size());
+
         return labelsHelper.toLabelBeans(filteredLabels);
     }
 
@@ -71,13 +77,16 @@ public class NotesRestController {
     @RequestMapping(path = "/account", method = RequestMethod.GET)
     public Account account() {
         Account account = accountRepository.findOne(securityService.findLoggedInUserAccount().getAccountid());
+
+        logger.debug("get account: {}", account);
+
         return account;
     }
 
     @Transactional
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
-    public Note saveNote(@RequestBody NoteBean bean) {
+    public Note createNote(@RequestBody NoteBean bean) {
 
         Account account = accountRepository.findAll().get(0);
 
@@ -92,7 +101,9 @@ public class NotesRestController {
         }
         note.setLabels(labels);
         noteRepository.flush();
-        System.out.println("save note id" + note.getId());
+
+        logger.debug("create note: {}", note.toString());
+
         return noteRepository.findOne(note.getId());
     }
 
@@ -121,13 +132,19 @@ public class NotesRestController {
 
         note.setLabels(labels);
         noteRepository.flush();
-        return noteRepository.findOne(note.getId());
+        Note newNote = noteRepository.findOne(note.getId());
+
+        logger.debug("update note: {}", newNote.toString());
+
+        return newNote;
     }
 
     @Transactional
     @ResponseBody
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteNote(@PathVariable long id) {
+
+        logger.debug("delete note: {}", id);
 
         noteRepository.delete(id);
     }

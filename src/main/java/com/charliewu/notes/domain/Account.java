@@ -83,4 +83,13 @@ public class Account {
     public void setNotes(Set<Note> notes) {
         this.notes = notes;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
