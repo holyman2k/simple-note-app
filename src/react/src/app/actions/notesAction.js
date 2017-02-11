@@ -29,6 +29,19 @@ export function fetchAccount() {
     }
 }
 
+export function fetchLabels() {
+    return function (dispatch) {
+        dispatch({ type: 'FETCH_LABELS' });
+        axios.get(`${baseUrl}/notes/labels`)
+            .then((response) => {
+                dispatch({ type: "FETCH_LABELS_FULFILLED", payload: response.data })
+            })
+            .catch((error) => {
+                dispatch({ type: "FETCH_LABELS_REJECTED", payload: error })
+            });
+    }
+}
+
 export function cancelEdit() {
     return {
         type: 'CANCEL_EDIT_NOTE',

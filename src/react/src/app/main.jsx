@@ -1,7 +1,8 @@
 require('jquery');
 require('bootstrap');
-require('./css/style.css');
+require('react-select/dist/react-select.css')
 require('./css/bootstrap.theme.min.css')
+require('./css/style.css');
 
 import React from 'react'
 import { render } from 'react-dom'

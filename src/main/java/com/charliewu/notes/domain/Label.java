@@ -70,4 +70,9 @@ public class Label {
         builder.append("id: ").append(getId()).append(", ").append("name: ").append(getName());
         return builder.toString();
     }
+
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
+    }
 }

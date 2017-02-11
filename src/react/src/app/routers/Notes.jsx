@@ -1,15 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchList, edit, search } from '../actions/notesAction'
+import { fetchList, fetchLabels, edit, search } from '../actions/notesAction'
 import SearchAndAdd from '../components/SearchAndAdd.jsx'
-import List from '../components/Users/List.jsx'
-import Editor from '../components/Users/Editor.jsx'
-import Delete from '../components/Users/Delete.jsx'
+import List from '../components/Notes/List.jsx'
+import Editor from '../components/Notes/Editor.jsx'
+import Delete from '../components/Notes/Delete.jsx'
 
 const Notes = ({dispatch, isLoaded, list, searchText}) => {
 
     if (!isLoaded) {
         dispatch(fetchList());
+        dispatch(fetchLabels());
     }
 
     const onAdd = () => {

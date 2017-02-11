@@ -2,6 +2,7 @@ import merge from 'merge'
 
 const initialState = {
     list: [],
+    labels: [],
     isLoaded: false,
     searchText: '',
     editItem: null,
@@ -20,6 +21,9 @@ export default function (state = merge(true, initialState), action) {
         }
         case 'FETCH_NOTES_FULFILLED': {
             return merge(true, state, { list: payload, isLoaded: true });
+        }
+        case 'FETCH_LABELS_FULFILLED': {
+            return merge(true, state, { labels: payload });
         }
         case 'CANCEL_EDIT_NOTE': {
             return merge(true, state, { editItem: null, deleteItem: null });
