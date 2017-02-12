@@ -2,6 +2,7 @@ package com.charliewu.notes.controllers.rest;
 
 import com.charliewu.notes.bean.LabelBean;
 import com.charliewu.notes.bean.NoteBean;
+import com.charliewu.notes.controllers.helpers.LabelsHelper;
 import com.charliewu.notes.domain.Account;
 import com.charliewu.notes.domain.Label;
 import com.charliewu.notes.domain.Note;
@@ -49,7 +50,7 @@ public class NotesRestController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET)
     public List<Note> list() {
-        Account account = accountRepository.findOne(securityService.findLoggedInUserAccount().getAccountid());
+        Account account = accountRepository.findOne(securityService.findLoggedInUserAccount().getAccountId());
         List<Note> notes = noteRepository.findByAccountOrderByIdDesc(account);
 
         logger.debug("load notes: {}", notes.size());
@@ -76,7 +77,7 @@ public class NotesRestController {
     @ResponseBody
     @RequestMapping(path = "/account", method = RequestMethod.GET)
     public Account account() {
-        Account account = accountRepository.findOne(securityService.findLoggedInUserAccount().getAccountid());
+        Account account = accountRepository.findOne(securityService.findLoggedInUserAccount().getAccountId());
 
         logger.debug("get account: {}", account);
 

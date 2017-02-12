@@ -1,4 +1,4 @@
-package com.charliewu.notes.controllers.rest;
+package com.charliewu.notes.controllers.helpers;
 
 import com.charliewu.notes.bean.LabelBean;
 import com.charliewu.notes.domain.Label;

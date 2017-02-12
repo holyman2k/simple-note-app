@@ -16,7 +16,7 @@ public class UserAccount extends User {
 
     private String username;
 
-    private long accountid;
+    private long accountId;
 
     public UserAccount(Account account) {
         super(account.getUsername(), account.getPassword(), new HashSet<GrantedAuthority>() {{
@@ -24,7 +24,7 @@ public class UserAccount extends User {
         }});
         this.name = account.getName();
         this.username = account.getUsername();
-        this.accountid = account.getId();
+        this.accountId = account.getId();
     }
 
     public String getName() {
@@ -44,11 +44,11 @@ public class UserAccount extends User {
         this.username = username;
     }
 
-    public long getAccountid() {
-        return accountid;
+    public long getAccountId() {
+        return accountId;
     }
 
-    public void setAccountid(long accountid) {
-        this.accountid = accountid;
+    public void setAccountId(long accountId) {
+        this.accountId = accountId;
     }
 }

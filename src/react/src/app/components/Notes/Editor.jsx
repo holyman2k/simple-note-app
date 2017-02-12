@@ -44,7 +44,7 @@ const UserEditor = ({dispatch, note, allLabels}) => {
     const title = id ? 'Edit Note' : 'Create Note';
 
     const extraLabels = labelsString.length == 0 ? [] : labelsString.split(',').filter(label => allLabels.filter(option => option.label == label).length == 0);
-    const labelOptions = allLabels.concat( extraLabels.map( (label, index) => ({ value: label, label }) ));
+    const labelOptions = allLabels.concat(extraLabels.map((label, index) => ({ value: label, label })));
 
     return (
         <Modal show={note != null} title={title} actionButtonTitle='SAVE'
@@ -57,7 +57,7 @@ const UserEditor = ({dispatch, note, allLabels}) => {
                 </div>
                 <div class='form-group'>
                     <Select.Creatable multi simpleValue name='labels' value={labelsString} options={labelOptions} onChange={onLabelChange}
-                        promptTextCreator={(label) => `Create label: ${label}`}/>
+                        promptTextCreator={(label) => `Create label: ${label}`} />
                 </div>
                 {labelsString}
             </form>
